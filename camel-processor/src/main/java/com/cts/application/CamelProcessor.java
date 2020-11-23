@@ -12,8 +12,8 @@ public class CamelProcessor {
 
 	/*
 	 * A Producer will produce some data and it will send to direct endpoint. From
-	 * direct endpoint, seda component with consume autmatically and From seda
-	 * component , our consumer will consume the data finally.
+	 * direct endpoint, seda component with consume automatically and From seda
+	 * component, our consumer will consume the data finally.
 	 * 
 	 * Direct is Synchronous and Seda is Asynchronous
 	 */	

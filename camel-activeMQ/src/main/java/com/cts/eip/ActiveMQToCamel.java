@@ -1,22 +1,18 @@
 package com.cts.eip;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 import javax.jms.ConnectionFactory;
 
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
-import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 
-public class ObjectToActiveMQ {
+public class ActiveMQToCamel {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception{
 		
-		CamelContext camel = new DefaultCamelContext();
+CamelContext camel = new DefaultCamelContext();
 		
 		ConnectionFactory factory = new ActiveMQConnectionFactory();
 		
@@ -27,13 +23,15 @@ public class ObjectToActiveMQ {
 			@Override
 			public void configure() throws Exception {
 				// TODO Auto-generated method stub
-				from("direct:abc")				
-					.to("activemq:queue:my_queue1");
+				from("activemq:queue:my_queue1")				
+					.to("stream:out");
 			}
 		});
-			camel.start();
-			
-			ProducerTemplate producer = camel.createProducerTemplate();
-			producer.sendBody("direct:abc",new String("In ActiveMQ"));
+		
+		camel.start();
+		
+		Thread.sleep(5000);
+		
+		camel.stop();
 	}
 }
