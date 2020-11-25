@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS address;
+
+CREATE TABLE address
+(
+	street varchar(50) NOT NULL,
+	streetName varchar(50) NOT NULL,
+	buildingNumber varchar(25) NOT NULL,
+	city varchar(25) NOT NULL,
+	zipcode varchar(25) NOT NULL,
+	country varchar(25) NOT NULL,
+	countryCode varchar(25) NOT NULL
+);
